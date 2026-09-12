@@ -1,0 +1,1 @@
+import {Navigate,useLocation} from 'react-router-dom';export default function RequireAdmin({children}){const l=useLocation();return localStorage.getItem('sumare_admin_token')?children:<Navigate to="/admin/login" state={{from:l}} replace/>}
