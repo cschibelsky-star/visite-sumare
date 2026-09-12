@@ -1,0 +1,41 @@
+services:
+  api:
+    build:
+      context: ./apps/api
+    container_name: conheca_sumare_api_hml
+    environment:
+      PORT: 8787
+      ADMIN_TOKEN: ${ADMIN_TOKEN}
+      DATA_DIR: /app/runtime-data
+      UPLOADS_DIR: /app/runtime-uploads
+    volumes:
+      - conheca_sumare_data:/app/runtime-data
+      - conheca_sumare_uploads:/app/runtime-uploads
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://127.0.0.1:8787/api/health"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+
+  web:
+    build:
+      context: ./apps/web
+    container_name: conheca_sumare_web_hml
+    depends_on:
+      api:
+        condition: service_healthy
+    ports:
+      - "127.0.0.1:8895:80"
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "wget -qO- http://127.0.0.1/ >/dev/null 2>&1 || exit 1"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+
+volumes:
+  conheca_sumare_data:
+  conheca_sumare_uploads:
