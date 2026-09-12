@@ -1,0 +1,26 @@
+--- docker-compose.hml.yml (GitHub base)
++++ docker-compose.hml.yml (VPS runtime preserved 2026-09-12)
+@@ web
+     restart: unless-stopped
++    networks:
++      - default
++      - traefik
++    labels:
++      - "traefik.enable=true"
++      - "traefik.docker.network=n8n-traefik_app_network"
++      - "traefik.http.routers.conheca-sumare-hml.rule=Host(`hml.conhecasumare.com.br`)"
++      - "traefik.http.routers.conheca-sumare-hml.entrypoints=websecure"
++      - "traefik.http.routers.conheca-sumare-hml.tls=true"
++      - "traefik.http.routers.conheca-sumare-hml.tls.certresolver=le"
++      - "traefik.http.routers.conheca-sumare-hml.priority=100"
++      - "traefik.http.services.conheca-sumare-hml.loadbalancer.server.port=80"
++      - "traefik.http.routers.conheca-sumare-hml.service=conheca-sumare-hml"
+@@ end
+ volumes:
+   conheca_sumare_data:
+   conheca_sumare_uploads:
++
++networks:
++  traefik:
++    external: true
++    name: n8n-traefik_app_network
