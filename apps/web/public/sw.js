@@ -1,5 +1,5 @@
-const CACHE_NAME = 'conheca-sumare-v1.1-20260912';
-const APP_SHELL = ['/', '/manifest.webmanifest', '/icons/icon.svg'];
+const CACHE_NAME = 'conheca-sumare-v4.1.2-20260929';
+const APP_SHELL = ['/manifest.webmanifest', '/icons/icon.svg'];
 
 self.addEventListener('install', (event) => {
   event.waitUntil(caches.open(CACHE_NAME).then((cache) => cache.addAll(APP_SHELL)));
@@ -9,8 +9,8 @@ self.addEventListener('install', (event) => {
 self.addEventListener('activate', (event) => {
   event.waitUntil(
     caches.keys().then((keys) => Promise.all(keys.filter((key) => key !== CACHE_NAME).map((key) => caches.delete(key))))
+      .then(() => self.clients.claim())
   );
-  self.clients.claim();
 });
 
 self.addEventListener('fetch', (event) => {
@@ -22,27 +22,36 @@ self.addEventListener('fetch', (event) => {
 
   if (request.mode === 'navigate') {
     event.respondWith(
-      fetch(request)
-        .then((response) => {
-          const copy = response.clone();
-          caches.open(CACHE_NAME).then((cache) => cache.put('/', copy));
-          return response;
-        })
+      fetch(request, {cache:'no-store'})
         .catch(() => caches.match('/'))
     );
     return;
   }
 
+  if (request.destination === 'image') {
+    event.respondWith(
+      fetch(request, {cache:'no-cache'})
+        .then((response) => {
+          if (response.ok) {
+            const copy = response.clone();
+            caches.open(CACHE_NAME).then((cache) => cache.put(request, copy));
+          }
+          return response;
+        })
+        .catch(() => caches.match(request))
+    );
+    return;
+  }
+
   event.respondWith(
-    caches.match(request).then((cached) => {
-      if (cached) return cached;
-      return fetch(request).then((response) => {
-        if (response.ok && ['script', 'style', 'image', 'font'].includes(request.destination)) {
+    fetch(request)
+      .then((response) => {
+        if (response.ok && ['script','style','font'].includes(request.destination)) {
           const copy = response.clone();
           caches.open(CACHE_NAME).then((cache) => cache.put(request, copy));
         }
         return response;
-      });
-    })
+      })
+      .catch(() => caches.match(request))
   );
 });
