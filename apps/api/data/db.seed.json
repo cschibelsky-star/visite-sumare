@@ -10,5 +10,10 @@
   "businesses": [{"id":"biz-1","name":"Café Central","description":"Cafeteria local de demonstração.","category":"cafeteria","address":"Centro, Sumaré/SP","hours":"8h às 18h","phone":"(19) 0000-0000","whatsapp":"5519000000000","featured":true,"active":true,"image_url":""}],
   "news": [{"id":"news-1","title":"Conheça Sumaré entra em nova fase","summary":"A V1 independente passa a operar em infraestrutura própria.","content":"Esta é uma notícia de demonstração da nova base independente do projeto Conheça Sumaré.","category":"geral","featured":true,"published":true,"image_url":""}],
   "routes": [{"id":"sumare-1dia","title":"Conheça Sumaré em 1 Dia","description":"Um roteiro para descobrir pontos centrais da cidade.","duration":"1 dia","difficulty":"Fácil","stops":["bosque-dallorto","pro-memoria","praca-bandeiras"],"tags":["completo","família","clássico"],"color":"#18743a"},{"id":"roteiro-cultural","title":"Roteiro Cultural","description":"História e memória de Sumaré.","duration":"Meio dia","difficulty":"Fácil","stops":["pro-memoria","praca-bandeiras"],"tags":["cultura","história"],"color":"#f5c400"}],
-  "event-submissions": []
+  "event-submissions": [],
+  "official_sources": [
+    {"id":"turismo-sumare-web","name":"Turismo Sumaré — Portal oficial","type":"website","url":"https://turismo.sumare.sp.gov.br/","authority":"primary","scope":["atrativos","turismo","eventos"],"active":true,"media_reuse":"verify_rights","notes":"Fonte primária para informações turísticas e institucionais."},
+    {"id":"cultura-sumare-web","name":"Cultura Sumaré — Portal oficial","type":"website","url":"https://cultura.sumare.sp.gov.br/","authority":"primary","scope":["cultura","eventos","agenda"],"active":true,"media_reuse":"verify_rights","notes":"Fonte primária para agenda e informações culturais."},
+    {"id":"cultura-sumare-instagram","name":"Cultura Sumaré — Instagram","type":"instagram","url":"https://www.instagram.com/culturasumare/","authority":"complementary","scope":["agenda","eventos","cultura","atualizacoes"],"active":true,"media_reuse":"verify_rights","notes":"Fonte complementar e ágil. Usar dados factuais com validação; imagens somente com direito/autorização confirmados."}
+  ]
 }
