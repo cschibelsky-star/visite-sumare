@@ -13,17 +13,7 @@ const attractionMedia={
   'bosque-dallorto':'/images/atrativos/bosque-dallorto/capa-real.jpg',
   'represa-marcelo-pedroni':'/images/atrativos/represa-marcelo-pedroni/capa-real.jpg',
   'praca-das-bandeiras':'/images/atrativos/praca-das-bandeiras/capa-real.jpg',
-  'pro-memoria':'/images/atrativos/pro-memoria/capa-real.jpg',
-  'horto-florestal':'/images/atrativos/horto-florestal/capa.jpg',
-  'ceav':'/images/atrativos/ceav/capa.jpg',
-  'igreja-matriz-santana':'/images/atrativos/igreja-matriz-santana/capa.jpg',
-  'orquidario-municipal':'/images/atrativos/orquidario-municipal/capa.jpg',
-  'nova-veneza':'/images/atrativos/nova-veneza/capa.jpg',
-  'shopping-parkcity':'/images/atrativos/shopping-parkcity/capa.jpg',
-  'recanto-dos-animais':'/images/atrativos/recanto-dos-animais/capa.jpg',
-  'estancia-arvore-da-vida':'/images/atrativos/estancia-arvore-da-vida/capa.jpg',
-  'capela-bom-jesus':'/images/atrativos/capela-bom-jesus/capa.jpg',
-  'casarao-sertaozinho':'/images/atrativos/casarao-sertaozinho/capa.jpg'
+  'pro-memoria':'/images/atrativos/pro-memoria/capa-real.jpg'
 };
 
 function Cover({item,failed,onFail}){
