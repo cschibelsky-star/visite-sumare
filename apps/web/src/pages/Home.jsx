@@ -2,13 +2,30 @@ import {useEffect,useMemo,useState} from 'react';
 import {Link} from 'react-router-dom';
 import {api} from '../services/api';
 
+const attractionMedia={
+  'bosque-dallorto':'/images/atrativos/bosque-dallorto/capa-real.jpg',
+  'represa-marcelo-pedroni':'/images/atrativos/represa-marcelo-pedroni/capa-real.jpg',
+  'praca-das-bandeiras':'/images/atrativos/praca-das-bandeiras/capa-real.jpg',
+  'pro-memoria':'/images/atrativos/pro-memoria/capa-real.jpg',
+  'horto-florestal':'/images/atrativos/horto-florestal/capa.jpg',
+  'ceav':'/images/atrativos/ceav/capa.jpg',
+  'igreja-matriz-santana':'/images/atrativos/igreja-matriz-santana/capa.jpg',
+  'orquidario-municipal':'/images/atrativos/orquidario-municipal/capa.jpg',
+  'nova-veneza':'/images/atrativos/nova-veneza/capa.jpg',
+  'shopping-parkcity':'/images/atrativos/shopping-parkcity/capa.jpg',
+  'recanto-dos-animais':'/images/atrativos/recanto-dos-animais/capa.jpg',
+  'estancia-arvore-da-vida':'/images/atrativos/estancia-arvore-da-vida/capa.jpg',
+  'capela-bom-jesus':'/images/atrativos/capela-bom-jesus/capa.jpg',
+  'casarao-sertaozinho':'/images/atrativos/casarao-sertaozinho/capa.jpg'
+};
+
 const quick=[
-  ['Natureza','/explorar?categoria=natureza','🌿'],
-  ['Cultura','/explorar?categoria=cultura','🏛'],
-  ['Eventos','/eventos','✦'],
-  ['Gastronomia','/guia-comercial','🍽'],
-  ['Hospedagem','/guia-comercial','⌂'],
-  ['Mapa','/mapa','⌖']
+  ['Natureza','/explorar?categoria=natureza','🌿','/images/atrativos/bosque-dallorto/capa-real.jpg'],
+  ['Cultura','/explorar?categoria=cultura','🏛','/images/atrativos/pro-memoria/capa-real.jpg'],
+  ['Eventos','/eventos','✦','/images/eventos/feira-artesanato/capa-real.jpg'],
+  ['Gastronomia','/guia-comercial','🍽','/images/atrativos/nova-veneza/capa.jpg'],
+  ['Hospedagem','/guia-comercial','⌂','/images/atrativos/shopping-parkcity/capa.jpg'],
+  ['Mapa','/mapa','⌖','/images/atrativos/praca-das-bandeiras/capa-real.jpg']
 ];
 
 export default function Home(){
@@ -54,7 +71,7 @@ export default function Home(){
       <div className="premium-container">
         <div className="premium-heading split"><div><span>DO SEU JEITO</span><h2>O que você quer fazer em Sumaré?</h2></div><p>Escolha uma experiência para hoje, para o fim de semana ou para montar seu próprio roteiro.</p></div>
         <div className="premium-quick-grid">
-          {quick.map(([label,to,icon],i)=><Link className={i===0?'premium-quick wide':'premium-quick'} key={label} to={to}><span>{icon}</span><div><small>DESCOBRIR</small><strong>{label}</strong></div><b>→</b></Link>)}
+          {quick.map(([label,to,icon,img],i)=><Link className={i===0?'premium-quick wide':'premium-quick'} key={label} to={to} style={{'--quick-img':`url("${img}")`}}><span>{icon}</span><div><small>DESCOBRIR</small><strong>{label}</strong></div><b>→</b></Link>)}
         </div>
       </div>
     </section>
@@ -64,7 +81,7 @@ export default function Home(){
         <div className="premium-heading"><span>VALE CONHECER</span><h2>Lugares que contam Sumaré.</h2><p>Natureza, memória, cultura e pontos de encontro para redescobrir a cidade.</p></div>
         <div className="premium-place-grid">
           {featured.map((a,i)=><Link className={i===0?'premium-place featured':'premium-place'} key={a.id} to={String(a.id).includes('-')?'/explorar':`/atrativo/${a.id}`}>
-            {a.image_url?<img src={a.image_url} alt={a.name}/>:<div className="premium-place-fallback"/>}
+            {(attractionMedia[a.id]||a.image_url)?<img src={attractionMedia[a.id]||a.image_url} alt={a.name} loading="eager" decoding="async"/>:<div className="premium-place-fallback"/>}
             <div><small>{a.neighborhood||'SUMARÉ'}</small><h3>{a.name}</h3><b>Ver detalhes →</b></div>
           </Link>)}
           <Link className="premium-place discover" to="/explorar"><div><small>EXPLORE MAIS</small><h3>Descubra outros lugares</h3><b>Ver todos →</b></div></Link>
@@ -88,9 +105,9 @@ export default function Home(){
       <div className="premium-container">
         <div className="premium-heading"><span>EXPERIÊNCIAS PRONTAS</span><h2>Escolha um roteiro e vá.</h2></div>
         <div className="premium-route-grid">
-          <Link to="/roteiros"><i>☀</i><small>ROTEIRO</small><h3>Um dia em Sumaré</h3><p>Natureza, cultura, sabores e pontos marcantes.</p><b>Explorar →</b></Link>
-          <Link to="/roteiros"><i>👨‍👩‍👧</i><small>ROTEIRO</small><h3>Sumaré em família</h3><p>Passeios e experiências para aproveitar juntos.</p><b>Explorar →</b></Link>
-          <Link to="/roteiros"><i>🏛</i><small>ROTEIRO</small><h3>Cultura & memória</h3><p>Histórias, patrimônio e identidade local.</p><b>Explorar →</b></Link>
+          <Link to="/roteiros" style={{'--route-img':'url("/images/atrativos/bosque-dallorto/capa-real.jpg")'}}><i>☀</i><small>ROTEIRO</small><h3>Um dia em Sumaré</h3><p>Natureza, cultura, sabores e pontos marcantes.</p><b>Explorar →</b></Link>
+          <Link to="/roteiros" style={{'--route-img':'url("/images/atrativos/horto-florestal/capa.jpg")'}}><i>👨‍👩‍👧</i><small>ROTEIRO</small><h3>Sumaré em família</h3><p>Passeios e experiências para aproveitar juntos.</p><b>Explorar →</b></Link>
+          <Link to="/roteiros" style={{'--route-img':'url("/images/atrativos/pro-memoria/capa-real.jpg")'}}><i>🏛</i><small>ROTEIRO</small><h3>Cultura & memória</h3><p>Histórias, patrimônio e identidade local.</p><b>Explorar →</b></Link>
         </div>
       </div>
     </section>
@@ -118,7 +135,7 @@ export default function Home(){
 
     <footer className="premium-footer">
       <div className="premium-brand"><span className="premium-brandmark"><img src="/icons/icon.svg" alt="" aria-hidden="true"/></span><span><b>Conheça Sumaré</b><small>Guia Digital da Cidade</small></span></div>
-      <div className="premium-tech"><div><small>TECNOLOGIA DESENVOLVIDA PELA</small><img src="https://vitrineaipro.com.br/assets/img/logo-vitrine-ai-pro-header.png" alt="Vitrine IA Pro"/></div></div>
+      <div className="premium-tech"><div><small>TECNOLOGIA DESENVOLVIDA PELA</small><img src="/assets/vitrine-ia-pro-logo.png" alt="Vitrine IA Pro"/></div></div>
     </footer>
   </div>
 }
