@@ -9,12 +9,29 @@ const categoryMeta={
   lazer:{label:'Lazer e Família',icon:'✦'}
 };
 
+const attractionMedia={
+  'bosque-dallorto':'/images/atrativos/bosque-dallorto/capa-real.jpg',
+  'represa-marcelo-pedroni':'/images/atrativos/represa-marcelo-pedroni/capa-real.jpg',
+  'praca-das-bandeiras':'/images/atrativos/praca-das-bandeiras/capa-real.jpg',
+  'pro-memoria':'/images/atrativos/pro-memoria/capa-real.jpg',
+  'horto-florestal':'/images/atrativos/horto-florestal/capa.jpg',
+  'ceav':'/images/atrativos/ceav/capa.jpg',
+  'igreja-matriz-santana':'/images/atrativos/igreja-matriz-santana/capa.jpg',
+  'orquidario-municipal':'/images/atrativos/orquidario-municipal/capa.jpg',
+  'nova-veneza':'/images/atrativos/nova-veneza/capa.jpg',
+  'shopping-parkcity':'/images/atrativos/shopping-parkcity/capa.jpg',
+  'recanto-dos-animais':'/images/atrativos/recanto-dos-animais/capa.jpg',
+  'estancia-arvore-da-vida':'/images/atrativos/estancia-arvore-da-vida/capa.jpg',
+  'capela-bom-jesus':'/images/atrativos/capela-bom-jesus/capa.jpg',
+  'casarao-sertaozinho':'/images/atrativos/casarao-sertaozinho/capa.jpg'
+};
+
 function Cover({item,failed,onFail}){
   const meta=categoryMeta[item.category]||{label:item.category_label||'Conheça Sumaré',icon:'⌖'};
-  const isHml=typeof window!=='undefined'&&(window.location.hostname.includes('.hml.')||window.location.hostname.startsWith('p000002.'));
-  const canUseImage=Boolean(item.image_url)&&(item.image_authorized==='sim'||isHml)&&!failed;
+  const media=attractionMedia[item.id]||item.image_url||'';
+  const canUseImage=Boolean(media)&&!failed;
   if(canUseImage){
-    return <img className="explore-card-img" src={item.image_url} alt={item.name} loading="lazy" onError={onFail}/>;
+    return <img className="explore-card-img" src={media} alt={item.name} loading="eager" decoding="async" onError={onFail}/>;
   }
   return <div className={`explore-card-fallback cat-${item.category||'default'}`} role="img" aria-label={`Capa de ${item.name}`}>
     <span>{meta.icon}</span>
