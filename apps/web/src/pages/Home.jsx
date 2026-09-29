@@ -118,7 +118,7 @@ export default function Home(){
 
     <footer className="premium-footer">
       <div className="premium-brand"><span className="premium-brandmark"><img src="/icons/icon.svg" alt="" aria-hidden="true"/></span><span><b>Conheça Sumaré</b><small>Guia Digital da Cidade</small></span></div>
-      <div className="premium-tech"><span>VIA</span><div><small>TECNOLOGIA DESENVOLVIDA PELA</small><strong>Vitrine IA Pro</strong></div></div>
+      <div className="premium-tech"><div><small>TECNOLOGIA DESENVOLVIDA PELA</small><img src="https://vitrineaipro.com.br/assets/img/logo-vitrine-ai-pro-header.png" alt="Vitrine IA Pro"/></div></div>
     </footer>
   </div>
 }
