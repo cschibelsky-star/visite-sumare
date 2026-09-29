@@ -26,7 +26,7 @@ export default function Home(){
 
   return <div className="page premium-home">
     <header className="premium-header">
-      <Link to="/" className="premium-brand"><span className="premium-brandmark">CS</span><span><b>Conheça Sumaré</b><small>Guia Digital da Cidade</small></span></Link>
+      <Link to="/" className="premium-brand"><span className="premium-brandmark"><img src="/icons/icon.svg" alt="" aria-hidden="true"/></span><span><b>Conheça Sumaré</b><small>Guia Digital da Cidade</small></span></Link>
       <nav><Link to="/explorar">Explorar</Link><Link to="/eventos">Eventos</Link><Link to="/roteiros">Roteiros</Link><Link to="/guia-comercial">Onde ir</Link></nav>
       <Link className="premium-header-btn" to="/meu-guia">Meu Guia</Link>
     </header>
@@ -117,7 +117,7 @@ export default function Home(){
     </section>
 
     <footer className="premium-footer">
-      <div className="premium-brand"><span className="premium-brandmark">CS</span><span><b>Conheça Sumaré</b><small>Guia Digital da Cidade</small></span></div>
+      <div className="premium-brand"><span className="premium-brandmark"><img src="/icons/icon.svg" alt="" aria-hidden="true"/></span><span><b>Conheça Sumaré</b><small>Guia Digital da Cidade</small></span></div>
       <div className="premium-tech"><span>VIA</span><div><small>TECNOLOGIA DESENVOLVIDA PELA</small><strong>Vitrine IA Pro</strong></div></div>
     </footer>
   </div>
