@@ -1,0 +1,47 @@
+services:
+  api:
+    build:
+      context: ./apps/api
+    container_name: conheca_sumare_api_prod
+    environment:
+      PORT: 8787
+      ADMIN_TOKEN: ${ADMIN_TOKEN}
+      DATA_DIR: /app/runtime-data
+      UPLOADS_DIR: /app/runtime-uploads
+    volumes:
+      - conheca_sumare_prod_data:/app/runtime-data
+      - conheca_sumare_prod_uploads:/app/runtime-uploads
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://127.0.0.1:8787/api/health"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+
+  web:
+    build:
+      context: ./apps/web
+    container_name: conheca_sumare_web_prod
+    depends_on:
+      api:
+        condition: service_healthy
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "wget -qO- http://127.0.0.1/ >/dev/null 2>&1 || exit 1"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+    networks:
+      - default
+      - traefik
+
+volumes:
+  conheca_sumare_prod_data:
+  conheca_sumare_prod_uploads:
+
+networks:
+  traefik:
+    external: true
+    name: n8n-traefik_app_network
