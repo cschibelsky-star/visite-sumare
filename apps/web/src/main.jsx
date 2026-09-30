@@ -6,21 +6,10 @@ import './index.css';
 import 'leaflet/dist/leaflet.css';
 
 if ('serviceWorker' in navigator && import.meta.env.PROD) {
-  window.addEventListener('load', async () => {
-    try {
-      const registration = await navigator.serviceWorker.register('/sw.js?v=4.1.2', {updateViaCache:'none'});
-      await registration.update();
-
-      navigator.serviceWorker.addEventListener('controllerchange', () => {
-        const key='sumare-sw-reloaded-4.1.2';
-        if (!sessionStorage.getItem(key)) {
-          sessionStorage.setItem(key,'1');
-          window.location.reload();
-        }
-      });
-    } catch (error) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/sw.js').catch((error) => {
       console.warn('Service worker registration failed:', error);
-    }
+    });
   });
 }
 
