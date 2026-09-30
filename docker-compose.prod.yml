@@ -1,4 +1,16 @@
 services:
+  migrate_data:
+    image: alpine:3.20
+    container_name: conheca_sumare_migrate_prod
+    command: >
+      sh -c "cp -a /source-data/. /target-data/ &&
+             cp -a /source-uploads/. /target-uploads/"
+    volumes:
+      - conheca_sumare_hml_data:/source-data:ro
+      - conheca_sumare_hml_uploads:/source-uploads:ro
+      - conheca_sumare_prod_data:/target-data
+      - conheca_sumare_prod_uploads:/target-uploads
+
   api:
     build:
       context: ./apps/api
@@ -38,6 +50,12 @@ services:
       - traefik
 
 volumes:
+  conheca_sumare_hml_data:
+    external: true
+    name: conheca-sumare-hml_conheca_sumare_data
+  conheca_sumare_hml_uploads:
+    external: true
+    name: conheca-sumare-hml_conheca_sumare_uploads
   conheca_sumare_prod_data:
   conheca_sumare_prod_uploads:
 
