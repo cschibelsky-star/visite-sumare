@@ -3,9 +3,10 @@ services:
     build:
       context: ./apps/api
     container_name: conheca_sumare_api_hml
+    env_file:
+      - ../.env.runtime
     environment:
       PORT: 8787
-      ADMIN_TOKEN: ${ADMIN_TOKEN}
       DATA_DIR: /app/runtime-data
       UPLOADS_DIR: /app/runtime-uploads
     volumes:
