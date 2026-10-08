@@ -1,0 +1,10 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {validDay,eventErrors,upcomingEvents,eventMatches,todayKey} from '../api/src/event-policy.js';
+const now=new Date('2026-10-08T13:00:00Z');
+const event={name:'Cultura',location:'Praça de Sumaré',date_start:'2026-10-10',status:'confirmed',source_url:'https://cultura.sumare.sp.gov.br/eventos',verified_at:'2026-10-08'};
+test('invalid calendar days and unsafe sources cannot publish',()=>{assert.equal(validDay('2026-02-30'),false);assert.ok(eventErrors({...event,source_url:'javascript:alert(1)'}).length);assert.ok(eventErrors({...event,date_end:'2026-10-09'}).length)});
+test('public agenda excludes expired, cancelled, unreviewed and source-less records',()=>{assert.deepEqual(upcomingEvents([event,{...event,status:'draft'},{...event,status:'cancelled'},{...event,source_url:''},{...event,date_start:'2026-10-07'}],now),[event])});
+test('today includes ongoing multi-day event; weekend includes Saturday/Sunday overlap',()=>{assert.equal(eventMatches({...event,date_start:'2026-10-07',date_end:'2026-10-09'},'today',now),true);assert.equal(eventMatches(event,'weekend',now),true);assert.equal(eventMatches({...event,date_start:'2026-10-12'},'weekend',now),false)});
+test('date-only final day remains active throughout the local day',()=>{assert.equal(upcomingEvents([{...event,date_start:'2026-10-08'}],new Date('2026-10-09T02:59:00Z')).length,1);assert.equal(upcomingEvents([{...event,date_start:'2026-10-08'}],new Date('2026-10-09T03:00:00Z')).length,0);assert.equal(todayKey(new Date('2026-10-09T02:59:00Z')),'2026-10-08')});
+test('Sunday weekend calculation does not skip current Sunday',()=>assert.equal(eventMatches({...event,date_start:'2026-10-11'},'weekend',new Date('2026-10-11T13:00:00Z')),true));

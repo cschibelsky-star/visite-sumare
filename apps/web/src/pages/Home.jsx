@@ -1,5 +1,6 @@
 import {useEffect,useMemo,useState} from 'react';
 import {Link} from 'react-router-dom';
+import Agenda from '../components/Agenda';
 import {api} from '../services/api';
 
 const quick=[
@@ -12,10 +13,8 @@ const quick=[
 ];
 
 export default function Home(){
-  const [events,setEvents]=useState([]);
   const [attractions,setAttractions]=useState([]);
   useEffect(()=>{
-    api.list('events').then(x=>setEvents(Array.isArray(x)?x.slice(0,3):[])).catch(()=>{});
     api.list('attractions').then(x=>setAttractions(Array.isArray(x)?x.filter(a=>a.featured).slice(0,4):[])).catch(()=>{});
   },[]);
   const featured=useMemo(()=>attractions.length?attractions:[
@@ -39,7 +38,7 @@ export default function Home(){
           <span className="premium-kicker"><i/> SUMARÉ · SÃO PAULO</span>
           <h1>Descubra Sumaré.<br/><em>Viva mais a sua cidade.</em></h1>
           <p>Encontre lugares, experiências, cultura, eventos, sabores e histórias para aproveitar Sumaré de um jeito novo.</p>
-          <div className="premium-actions"><Link className="premium-btn light" to="/explorar">Explorar Sumaré <b>→</b></Link><Link className="premium-btn outline" to="/eventos">O que fazer hoje</Link></div>
+          <div className="premium-actions"><Link className="premium-btn light" to="/explorar">Explorar Sumaré <b>→</b></Link><Link className="premium-btn outline" to="/eventos">Ver agenda</Link></div>
           <Link className="premium-search" to="/explorar"><span>⌕</span><span>Busque lugares, experiências e eventos</span><b>Buscar</b></Link>
         </div>
         <aside className="premium-hero-card">
@@ -64,7 +63,7 @@ export default function Home(){
         <div className="premium-heading"><span>VALE CONHECER</span><h2>Lugares que contam Sumaré.</h2><p>Natureza, memória, cultura e pontos de encontro para redescobrir a cidade.</p></div>
         <div className="premium-place-grid">
           {featured.map((a,i)=><Link className={i===0?'premium-place featured':'premium-place'} key={a.id} to={String(a.id).includes('-')?'/explorar':`/atrativo/${a.id}`}>
-            {a.image_url?<img src={a.image_url} alt={a.name}/>:<div className="premium-place-fallback"/>}
+            {a.image_url?<img src={a.image_url} alt={a.name} onError={(e)=>{e.currentTarget.remove()}}/>:<div className="premium-place-fallback"/>}
             <div><small>{a.neighborhood||'SUMARÉ'}</small><h3>{a.name}</h3><b>Ver detalhes →</b></div>
           </Link>)}
           <Link className="premium-place discover" to="/explorar"><div><small>EXPLORE MAIS</small><h3>Descubra outros lugares</h3><b>Ver todos →</b></div></Link>
@@ -74,13 +73,9 @@ export default function Home(){
 
     <section className="premium-section premium-agenda">
       <div className="premium-container">
-        <div className="premium-heading split light"><div><span>AGENDA DA CIDADE</span><h2>Sempre tem algo acontecendo.</h2></div><Link to="/eventos">Ver agenda completa →</Link></div>
-        <div className="premium-event-grid">
-          {(events.length?events:[{id:'agenda',name:'Agenda Cultural de Sumaré',date_start:'Confira a programação',location:'Sumaré'},{id:'fimdesemana',name:'Seu fim de semana na cidade',date_start:'Experiências locais',location:'Sumaré'},{id:'eventos',name:'Eventos e atividades',date_start:'Atualizações da cidade',location:'Sumaré'}]).map((e,i)=><Link key={e.id} to="/eventos" className={i===0?'premium-event main':'premium-event'}>
-            <span className="premium-event-index">0{i+1}</span><small>{e.date_start||'AGENDA'}</small><h3>{e.name}</h3><p>{e.location||'Sumaré'}</p><b>Ver programação →</b>
-          </Link>)}
-        </div>
-        <div className="premium-source"><span>✓</span><p><b>Curadoria conectada à cidade.</b> A experiência foi preparada para integrar informações públicas e fontes oficiais sem transformar o portal em um site institucional.</p></div>
+        <div className="premium-heading split light"><div><span>AGENDA DA CIDADE</span><h2>O que fazer em Sumaré.</h2></div><Link to="/eventos">Ver agenda completa →</Link></div>
+        <Agenda compact/>
+        <div className="premium-source"><span>✓</span><p><b>Curadoria conectada à cidade.</b> Eventos com fonte pública e data de conferência, selecionados para moradores e visitantes.</p></div>
       </div>
     </section>
 
