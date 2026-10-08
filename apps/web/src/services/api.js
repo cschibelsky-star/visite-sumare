@@ -1,7 +1,9 @@
 const API='/api';
-const json=async(res)=>{if(!res.ok){let m='Erro na API';try{m=(await res.json()).error||m}catch{}throw new Error(m)}return res.status===204?null:res.json()};
+const normalizeMediaUrl=(value)=>{if(typeof value!=='string'||!value)return value;const i=value.indexOf('/uploads/');return i>=0?value.slice(i):value};
+const normalizePayload=(data)=>Array.isArray(data)?data.map(normalizePayload):(data&&typeof data==='object'?Object.fromEntries(Object.entries(data).map(([k,v])=>[k,k==='image_url'?normalizeMediaUrl(v):normalizePayload(v)])):data);
+const json=async(res)=>{if(!res.ok){let m='Erro na API';try{m=(await res.json()).error||m}catch{}throw new Error(m)}if(res.status===204)return null;return normalizePayload(await res.json())};
 export const api={
- list:(r)=>fetch(`${API}/${r}`).then(json), get:(r,id)=>fetch(`${API}/${r}/${id}`).then(json),
+ list:(r)=>fetch(`${API}/${r}`,{headers:r==='event-submissions'?adminHeader():{}}).then(json), listAdmin:(r)=>fetch(`${API}/${r}`,{headers:adminHeader()}).then(json), get:(r,id)=>fetch(`${API}/${r}/${id}`).then(json),
  create:(r,data)=>fetch(`${API}/${r}`,{method:'POST',headers:{'Content-Type':'application/json',...adminHeader()},body:JSON.stringify(data)}).then(json),
  update:(r,id,data)=>fetch(`${API}/${r}/${id}`,{method:'PUT',headers:{'Content-Type':'application/json',...adminHeader()},body:JSON.stringify(data)}).then(json),
  remove:(r,id)=>fetch(`${API}/${r}/${id}`,{method:'DELETE',headers:adminHeader()}).then(json),
