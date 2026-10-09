@@ -1,4 +1,4 @@
-const CACHE_NAME = 'conheca-sumare-v1.1-20260912';
+const CACHE_NAME = 'conheca-sumare-calendar-20261009';
 const APP_SHELL = ['/', '/manifest.webmanifest', '/icons/icon.svg'];
 
 self.addEventListener('install', (event) => {
@@ -18,7 +18,7 @@ self.addEventListener('fetch', (event) => {
   if (request.method !== 'GET') return;
 
   const url = new URL(request.url);
-  if (url.origin !== self.location.origin || url.pathname.startsWith('/api/')) return;
+  if (url.origin !== self.location.origin || url.pathname.startsWith('/api/') || url.pathname==='/calendar-feed.php') return;
 
   if (request.mode === 'navigate') {
     event.respondWith(
