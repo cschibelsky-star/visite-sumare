@@ -1,5 +1,7 @@
 FROM node:22-alpine AS build
 WORKDIR /app
+ARG VITE_CALENDAR_FEED_URL
+ENV VITE_CALENDAR_FEED_URL=$VITE_CALENDAR_FEED_URL
 COPY package.json ./
 RUN npm install
 COPY . .
