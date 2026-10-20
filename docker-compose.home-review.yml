@@ -2,6 +2,7 @@ services:
   web:
     build:
       context: ./apps/web
+      dockerfile: Dockerfile.review
     restart: "no"
     ports:
       - "127.0.0.1:18995:80"
