@@ -1,0 +1,13 @@
+services:
+  web:
+    build:
+      context: ./apps/web
+    restart: "no"
+    ports:
+      - "127.0.0.1:18995:80"
+    healthcheck:
+      test: ["CMD-SHELL", "wget -qO- http://127.0.0.1/ >/dev/null 2>&1"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+volumes: {}
