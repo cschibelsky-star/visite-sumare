@@ -14,8 +14,10 @@ export default function Home(){
    window.addEventListener('beforeinstallprompt',ready);
    return ()=>{alive=false;window.removeEventListener('beforeinstallprompt',ready)};
  },[]);
- const today=new Date().toISOString().slice(0,10);
- const nextEvent=events.filter(e=>(e.status==='confirmed'||e.status==='published')&& (!e.date_end||e.date_end>=today)&&(!e.date_start||e.date_start>=today)).sort((a,b)=>String(a.date_start||'').localeCompare(String(b.date_start||'')))[0];
+ const currentDateParts=new Intl.DateTimeFormat('en-US',{timeZone:'America/Sao_Paulo',year:'numeric',month:'2-digit',day:'2-digit'}).formatToParts(new Date());
+ const currentDate=Object.fromEntries(currentDateParts.filter(p=>p.type==='year'||p.type==='month'||p.type==='day').map(p=>[p.type,p.value]));
+ const today=`${currentDate.year}-${currentDate.month}-${currentDate.day}`;
+ const nextEvent=events.filter(e=>(e.status==='confirmed'||e.status==='published')&&String(e.date_end||e.date_start||'9999-12-31')>=today).sort((a,b)=>String(a.date_start||'').localeCompare(String(b.date_start||'')))[0];
  async function installApp(){
    if(prompt){await prompt.prompt();await prompt.userChoice;setPrompt(null);return;}
    setInstallHint('Para instalar, abra o menu do navegador e escolha Adicionar à tela inicial.');
