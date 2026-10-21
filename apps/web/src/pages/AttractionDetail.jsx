@@ -5,10 +5,10 @@ import {api} from '../services/api';
 import {favorites} from '../lib/favorites';
 
 const attractionMedia={
-  'bosque-dallorto':'/images/atrativos/bosque-dallorto/capa-real.jpg',
-  'represa-marcelo-pedroni':'/images/atrativos/represa-marcelo-pedroni/capa-real.jpg',
-  'praca-das-bandeiras':'/images/atrativos/praca-das-bandeiras/capa-real.jpg',
-  'pro-memoria':'/images/atrativos/pro-memoria/capa-real.jpg'
+  'bosque-dallorto':'https://raw.githubusercontent.com/cschibelsky-star/VitrineAI-FACTORY-ENTERPRISE-X/main/products/guia-digital-turismo/implementacao_4_3/images/atrativos/bosque-dallorto/capa-real.jpg',
+  'represa-marcelo-pedroni':'https://raw.githubusercontent.com/cschibelsky-star/VitrineAI-FACTORY-ENTERPRISE-X/main/products/guia-digital-turismo/implementacao_4_3/images/atrativos/represa-marcelo-pedroni/capa-real.jpg',
+  'praca-das-bandeiras':'https://raw.githubusercontent.com/cschibelsky-star/VitrineAI-FACTORY-ENTERPRISE-X/main/products/guia-digital-turismo/implementacao_4_3/images/atrativos/praca-das-bandeiras/capa-real.jpg',
+  'pro-memoria':'https://raw.githubusercontent.com/cschibelsky-star/VitrineAI-FACTORY-ENTERPRISE-X/main/products/guia-digital-turismo/implementacao_4_3/images/atrativos/pro-memoria/capa-real.jpg'
 };
 
 export default function AttractionDetail(){
