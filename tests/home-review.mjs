@@ -37,6 +37,8 @@ try {
     report.views.push({width,layout,errors,failures});
     check(`No JavaScript crash at ${width}`,errors.length===0);
     check(`No horizontal overflow at ${width}`,layout.scrollWidth<=width);
+    check(`History photo configured at ${width}`,await page.locator('.f-history-photo').evaluate(el=>getComputedStyle(el).backgroundImage!=='none'));
+    if(width>760) check(`Desktop Home has no PWA navigation overlay at ${width}`,!(await page.locator('.bottomnav').isVisible()));
     await page.getByRole('button',{name:'Baixar App',exact:true}).click();
     check(`PWA fallback guidance at ${width}`,await page.getByText('Para instalar, abra o menu do navegador e escolha Adicionar à tela inicial.').isVisible());
     await context.close();
