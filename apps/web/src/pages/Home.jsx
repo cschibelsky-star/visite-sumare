@@ -126,7 +126,7 @@ export default function Home(){
 <footer className="f-footer">
   <div className="f-footer-logo"><img src="/brand/conheca-sumare.png" alt="Conheça Sumaré" width="2025" height="777" loading="lazy"/></div>
   <nav><a href="/">Conheça Sumaré</a><a href="/eventos">Eventos</a><a href="/explorar">Gastronomia</a><a href="/guia-comercial">Negócios</a><a href="/mapa">Mapa</a><a href="/privacidade">Política de Privacidade</a><a href="https://turismo.sumare.sp.gov.br/" target="_blank" rel="noopener">Portal Oficial da Cidade</a></nav>
-  <div className="f-tech"><small>Tecnologia e desenvolvimento</small><img src="https://raw.githubusercontent.com/cschibelsky-star/vitrine-ai-pro/main/assets/img/logo-vitrine-ai-pro.png" alt="Vitrine IA Pro"/></div>
+  <div className="f-tech"><small>Tecnologia e desenvolvimento</small><img src="/brand/vitrine-ia-pro-oficial.webp" alt="Vitrine IA Pro"/></div>
 </footer>
 </div>
 {installHint && <p className="home-install-hint" role="status">{installHint}</p>}
