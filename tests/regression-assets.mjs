@@ -16,3 +16,23 @@ for(const name of ['attraction-premium-page','attraction-detail-cover','attracti
 for(const name of ['map-premium-page','map-premium-canvas']) assert(map.includes(name),'Map missing '+name);
 for(const cls of ['.explore-premium-page','.attraction-premium-page','.map-premium-page']) assert(css.includes(cls),'CSS missing '+cls);
 console.log('Historical 14 attraction inventory, official sources and premium screens: OK');
+
+import {createHash} from 'node:crypto';
+const home=fs.readFileSync('apps/web/src/pages/Home.jsx','utf8');
+const homeStyles=fs.readFileSync('apps/web/src/pages/HomeReference.css','utf8');
+const routes=fs.readFileSync('apps/web/src/App.jsx','utf8');
+for(const marker of [
+  'faithful-home','f-hero','Descubra','Sumaré','f-categories',
+  'f-feature-grid','f-history','f-business-grid','f-footer',
+  'src="/brand/vitrine-ia-pro-oficial.webp"'
+]) assert(home.includes(marker),'Missing approved React Home composition: '+marker);
+for(const selector of ['.f-hero','.f-categories','.f-history','.f-footer'])
+  assert(homeStyles.includes(selector),'Missing approved Home style: '+selector);
+for(const route of ['path="/"','path="/explorar"','path="/mapa"'])
+  assert(routes.includes(route),'Restored public route missing: '+route);
+const footer=fs.readFileSync('apps/web/public/brand/vitrine-ia-pro-oficial.webp');
+const source=Buffer.concat([Buffer.from('blob '+footer.length+'\0'),footer]);
+assert.equal(createHash('sha1').update(source).digest('hex'),
+  '9fd4e12a2a13e73ec809bab38bcf3bf6a9603fb5',
+  'User-approved Vitrine IA Pro footer logo was replaced');
+console.log('Conheça Sumaré React Home and approved footer asset regression guard: OK');
