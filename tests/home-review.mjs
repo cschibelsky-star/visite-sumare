@@ -55,10 +55,12 @@ try {
     const response=await page.goto(base+route,{waitUntil:'networkidle'});
     check(`Direct React route ${route}`,response.ok() && errors.length===0);
     if(route==='/explorar') {
+      await page.screenshot({path:`${out}/explore-restored.png`,fullPage:true});
       check('Explore premium layout restored',await page.locator('.explore-premium-page .explore-premium-hero').count()===1);
       check('Explore category filters restored',await page.locator('.explore-filter-row button').count()>0);
     }
     if(route==='/mapa') {
+      await page.screenshot({path:`${out}/map-restored.png`,fullPage:true});
       check('Premium map screen restored',await page.locator('.map-premium-page .map-premium-hero').count()===1);
     }
     if(route==='/eventos') {
