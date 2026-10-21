@@ -11,10 +11,10 @@ const categoryMeta={
 };
 
 const attractionMedia={
-  'bosque-dallorto':'https://raw.githubusercontent.com/cschibelsky-star/VitrineAI-FACTORY-ENTERPRISE-X/main/products/guia-digital-turismo/implementacao_4_3/images/atrativos/bosque-dallorto/capa-real.jpg',
-  'represa-marcelo-pedroni':'https://raw.githubusercontent.com/cschibelsky-star/VitrineAI-FACTORY-ENTERPRISE-X/main/products/guia-digital-turismo/implementacao_4_3/images/atrativos/represa-marcelo-pedroni/capa-real.jpg',
-  'praca-das-bandeiras':'https://raw.githubusercontent.com/cschibelsky-star/VitrineAI-FACTORY-ENTERPRISE-X/main/products/guia-digital-turismo/implementacao_4_3/images/atrativos/praca-das-bandeiras/capa-real.jpg',
-  'pro-memoria':'https://raw.githubusercontent.com/cschibelsky-star/VitrineAI-FACTORY-ENTERPRISE-X/main/products/guia-digital-turismo/implementacao_4_3/images/atrativos/pro-memoria/capa-real.jpg'
+  'bosque-dallorto':'/media/images/atrativos/bosque-dallorto/capa-real.jpg',
+  'represa-marcelo-pedroni':'/media/images/atrativos/represa-marcelo-pedroni/capa-real.jpg',
+  'praca-das-bandeiras':'/media/images/atrativos/praca-das-bandeiras/capa-real.jpg',
+  'pro-memoria':'/media/images/atrativos/pro-memoria/capa-real.jpg'
 };
 
 function Cover({item,failed,onFail}){
