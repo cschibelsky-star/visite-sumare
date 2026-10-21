@@ -16,6 +16,12 @@ try {
   check('Events proxied as JSON', eventsResponse.ok && eventsResponse.headers.get('content-type').includes('application/json'));
   const events = await eventsResponse.json();
   check('Disposable review events, including negative cases', events.length===4 && events.some(e=>e.id==='review-pending'));
+  const approvedMedia=["images/atrativos/praca-das-bandeiras/capa-real.jpg","images/atrativos/igreja-matriz-santana/capa.jpg","images/eventos/feira-artesanato/capa-real.jpg","images/atrativos/bosque-dallorto/capa-real.jpg","images/atrativos/pro-memoria/capa-real.jpg","images/atrativos/represa-marcelo-pedroni/capa-real.jpg","images/atrativos/horto-florestal/capa.jpg","images/atrativos/casarao-sertaozinho/capa.jpg","images/atrativos/shopping-parkcity/capa.jpg","images/atrativos/nova-veneza/capa.jpg","images/atrativos/ceav/capa.jpg","images/atrativos/orquidario-municipal/capa.jpg","images/atrativos/recanto-dos-animais/capa.jpg","images/atrativos/estancia-arvore-da-vida/capa.jpg","images/atrativos/capela-bom-jesus/capa.jpg","assets/img/real/comercio.jpg","assets/img/real/gastronomia.jpg","assets/img/real/hospedagem.jpg","assets/img/hero-real.jpg"];
+  for(const item of approvedMedia){
+    const response=await fetch(`${base}/media/${item}`);
+    const bytes=new Uint8Array(await response.arrayBuffer());
+    check(`Official photo ${item}`,response.ok && response.headers.get('content-type')?.includes('image/') && bytes[0]===255 && bytes[1]===216 && bytes.length>1000);
+  }
   const image = await fetch(`${base}/uploads/review.png`);
   const bytes = new Uint8Array(await image.arrayBuffer());
   check('Upload path returns PNG bytes, not SPA HTML', image.ok && bytes[0]===137 && bytes[1]===80);
