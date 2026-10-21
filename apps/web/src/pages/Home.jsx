@@ -53,7 +53,7 @@ export default function Home(){
         <span>⚑<small>Hospedagem</small></span><span>⌖<small>Mapas</small></span><span>▣<small>Negócios</small></span>
       </div>
       <div className="f-phone-label"><b>Destaques</b><small>Negócios →</small></div>
-      <div className="f-phone-card" style={{backgroundImage:"url('https://raw.githubusercontent.com/cschibelsky-star/VitrineAI-FACTORY-ENTERPRISE-X/main/products/guia-digital-turismo/implementacao_4_3/images/atrativos/bosque-dallorto/capa-real.jpg')"}}><span>Bosque dos Lagos<br/>Sumaré</span></div>
+      <div className="f-phone-card" style={{backgroundImage:"url('/media/images/atrativos/bosque-dallorto/capa-real.jpg')"}}><span>Bosque dos Lagos<br/>Sumaré</span></div>
     </div>
   </div>
   <div className="f-script">História<br/>Cultura<br/>Pessoas<br/>Oportunidades</div>
@@ -61,12 +61,12 @@ export default function Home(){
 </section>
 
 <section className="f-categories" id="turismo">
-  <a href="/explorar" style={{'--img':"url('https://raw.githubusercontent.com/cschibelsky-star/VitrineAI-FACTORY-ENTERPRISE-X/main/products/guia-digital-turismo/implementacao_4_3/images/atrativos/bosque-dallorto/capa-real.jpg')"}}><i>♧</i><strong>Natureza</strong></a>
-  <a href="#historia" style={{'--img':"url('https://raw.githubusercontent.com/cschibelsky-star/VitrineAI-FACTORY-ENTERPRISE-X/main/products/guia-digital-turismo/implementacao_4_3/images/atrativos/igreja-matriz-santana/capa.jpg')"}}><i>⌂</i><strong>Cultura</strong></a>
-  <a href="/eventos" style={{'--img':"url('https://raw.githubusercontent.com/cschibelsky-star/VitrineAI-FACTORY-ENTERPRISE-X/main/products/guia-digital-turismo/implementacao_4_3/images/eventos/feira-artesanato/capa-real.jpg')"}}><i>☕</i><strong>Eventos</strong></a>
-  <a href="/mapa" style={{'--img':"url('https://raw.githubusercontent.com/cschibelsky-star/VitrineAI-FACTORY-ENTERPRISE-X/main/products/guia-digital-turismo/implementacao_4_3/assets/img/real/comercio.jpg')"}}><i>●</i><strong>Mapa</strong></a>
-  <a id="gastronomia" href="/explorar" style={{'--img':"url('https://raw.githubusercontent.com/cschibelsky-star/VitrineAI-FACTORY-ENTERPRISE-X/main/products/guia-digital-turismo/implementacao_4_3/assets/img/real/gastronomia.jpg')"}}><i>♨</i><strong>Gastronomia</strong></a>
-  <a href="/explorar" style={{'--img':"url('https://raw.githubusercontent.com/cschibelsky-star/VitrineAI-FACTORY-ENTERPRISE-X/main/products/guia-digital-turismo/implementacao_4_3/assets/img/real/hospedagem.jpg')"}}><i>▰</i><strong>Hospedagem</strong></a>
+  <a href="/explorar" style={{'--img':"url('/media/images/atrativos/bosque-dallorto/capa-real.jpg')"}}><i>♧</i><strong>Natureza</strong></a>
+  <a href="#historia" style={{'--img':"url('/media/images/atrativos/igreja-matriz-santana/capa.jpg')"}}><i>⌂</i><strong>Cultura</strong></a>
+  <a href="/eventos" style={{'--img':"url('/media/images/eventos/feira-artesanato/capa-real.jpg')"}}><i>☕</i><strong>Eventos</strong></a>
+  <a href="/mapa" style={{'--img':"url('/media/assets/img/real/comercio.jpg')"}}><i>●</i><strong>Mapa</strong></a>
+  <a id="gastronomia" href="/explorar" style={{'--img':"url('/media/assets/img/real/gastronomia.jpg')"}}><i>♨</i><strong>Gastronomia</strong></a>
+  <a href="/explorar" style={{'--img':"url('/media/assets/img/real/hospedagem.jpg')"}}><i>▰</i><strong>Hospedagem</strong></a>
 </section>
 
 <section className="f-official">
@@ -75,9 +75,9 @@ export default function Home(){
     <a href="/explorar">Ver todos os atrativos &nbsp;→</a>
   </div>
   <div className="f-feature-grid">
-    <a className="f-feature" href="/explorar" style={{'--img':"url('https://raw.githubusercontent.com/cschibelsky-star/VitrineAI-FACTORY-ENTERPRISE-X/main/products/guia-digital-turismo/implementacao_4_3/images/atrativos/bosque-dallorto/capa-real.jpg')"}}><div><small>NATUREZA</small><h3>Bosque dos Lagos</h3><p>Lazer, contato com a natureza<br/>e um dos principais cartões-postais<br/>de Sumaré.</p><b>›</b></div></a>
-    <a className="f-feature" href="/explorar" style={{'--img':"url('https://raw.githubusercontent.com/cschibelsky-star/VitrineAI-FACTORY-ENTERPRISE-X/main/products/guia-digital-turismo/implementacao_4_3/images/atrativos/pro-memoria/capa-real.jpg')"}}><div><small className="yellow">CULTURA</small><h3>Pró-Memória de Sumaré</h3><p>História, memória e identidade<br/>da nossa cidade.</p><b>›</b></div></a>
-    <a className="f-feature" href="/eventos" style={{'--img':"url('https://raw.githubusercontent.com/cschibelsky-star/VitrineAI-FACTORY-ENTERPRISE-X/main/products/guia-digital-turismo/implementacao_4_3/images/eventos/feira-artesanato/capa-real.jpg')"}}><div><small>EVENTOS</small><h3>{nextEvent?.name || "Agenda de eventos"}</h3><p>{nextEvent ? `${nextEvent.location || "Sumaré"} · ${nextEvent.date_start || "Confira a programação"}` : "Acompanhe a agenda com eventos confirmados e informações atualizadas."}</p><b>›</b></div></a>
+    <a className="f-feature" href="/explorar" style={{'--img':"url('/media/images/atrativos/bosque-dallorto/capa-real.jpg')"}}><div><small>NATUREZA</small><h3>Bosque dos Lagos</h3><p>Lazer, contato com a natureza<br/>e um dos principais cartões-postais<br/>de Sumaré.</p><b>›</b></div></a>
+    <a className="f-feature" href="/explorar" style={{'--img':"url('/media/images/atrativos/pro-memoria/capa-real.jpg')"}}><div><small className="yellow">CULTURA</small><h3>Pró-Memória de Sumaré</h3><p>História, memória e identidade<br/>da nossa cidade.</p><b>›</b></div></a>
+    <a className="f-feature" href="/eventos" style={{'--img':"url('/media/images/eventos/feira-artesanato/capa-real.jpg')"}}><div><small>EVENTOS</small><h3>{nextEvent?.name || "Agenda de eventos"}</h3><p>{nextEvent ? `${nextEvent.location || "Sumaré"} · ${nextEvent.date_start || "Confira a programação"}` : "Acompanhe a agenda com eventos confirmados e informações atualizadas."}</p><b>›</b></div></a>
   </div>
 </section>
 
@@ -87,9 +87,9 @@ export default function Home(){
     <p>Uma cidade com raízes fortes, patrimônio histórico<br/>e uma identidade construída por sua gente.</p>
     <a href="/explorar">Conheça nossa história &nbsp;→</a>
     <div className="f-mini-grid">
-      <a href="/explorar" style={{'--img':"url('https://raw.githubusercontent.com/cschibelsky-star/VitrineAI-FACTORY-ENTERPRISE-X/main/products/guia-digital-turismo/implementacao_4_3/images/atrativos/igreja-matriz-santana/capa.jpg')"}}><span>♟</span><b>Área Urbana e Rural</b></a>
-      <a href="/eventos" style={{'--img':"url('https://raw.githubusercontent.com/cschibelsky-star/VitrineAI-FACTORY-ENTERPRISE-X/main/products/guia-digital-turismo/implementacao_4_3/images/eventos/feira-artesanato/capa-real.jpg')"}}><span>♚</span><b>Cultura popular</b></a>
-      <a href="/explorar" style={{'--img':"url('https://raw.githubusercontent.com/cschibelsky-star/VitrineAI-FACTORY-ENTERPRISE-X/main/products/guia-digital-turismo/implementacao_4_3/images/atrativos/bosque-dallorto/capa-real.jpg')"}}><span>♧</span><b>Natureza e Lazer</b></a>
+      <a href="/explorar" style={{'--img':"url('/media/images/atrativos/igreja-matriz-santana/capa.jpg')"}}><span>♟</span><b>Área Urbana e Rural</b></a>
+      <a href="/eventos" style={{'--img':"url('/media/images/eventos/feira-artesanato/capa-real.jpg')"}}><span>♚</span><b>Cultura popular</b></a>
+      <a href="/explorar" style={{'--img':"url('/media/images/atrativos/bosque-dallorto/capa-real.jpg')"}}><span>♧</span><b>Natureza e Lazer</b></a>
     </div>
   </div>
   <div className="f-history-photo" >
