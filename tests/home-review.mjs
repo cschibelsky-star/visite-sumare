@@ -54,6 +54,13 @@ try {
     const errors=[];page.on('pageerror',e=>errors.push(e.message));
     const response=await page.goto(base+route,{waitUntil:'networkidle'});
     check(`Direct React route ${route}`,response.ok() && errors.length===0);
+    if(route==='/explorar') {
+      check('Explore premium layout restored',await page.locator('.explore-premium-page .explore-premium-hero').count()===1);
+      check('Explore category filters restored',await page.locator('.explore-filter-row button').count()>0);
+    }
+    if(route==='/mapa') {
+      check('Premium map screen restored',await page.locator('.map-premium-page .map-premium-hero').count()===1);
+    }
     if(route==='/eventos') {
       await page.getByRole('heading',{name:'Evento de homologação — confirmado',exact:true}).waitFor();
       check('Event image decoded through uploads proxy',await page.locator('img[src="/uploads/review.png"]').first().evaluate(i=>i.complete && i.naturalWidth>0));
