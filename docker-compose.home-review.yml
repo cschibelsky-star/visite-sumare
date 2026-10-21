@@ -1,9 +1,30 @@
+name: conheca-home-review
 services:
+  api:
+    build: ./apps/api
+    command: ["node", "src/review.js"]
+    restart: "no"
+    environment:
+      DATA_DIR: /app/review-data
+      UPLOADS_DIR: /app/review-uploads
+    tmpfs:
+      - /app/review-data
+      - /app/review-uploads
+    networks: [review]
+    healthcheck:
+      test: ["CMD", "node", "-e", "fetch('http://127.0.0.1:8787/api/health').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
   web:
     build:
       context: ./apps/web
       dockerfile: Dockerfile.review
     restart: "no"
+    depends_on:
+      api:
+        condition: service_healthy
+    networks: [review]
     ports:
       - "127.0.0.1:18995:80"
     healthcheck:
@@ -11,4 +32,6 @@ services:
       interval: 30s
       timeout: 5s
       retries: 3
-volumes: {}
+networks:
+  review: {}
+
