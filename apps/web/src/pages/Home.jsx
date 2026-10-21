@@ -25,7 +25,7 @@ export default function Home(){
  return <div className="page faithful-home">
 <div className="faithful-page">
 <header className="f-header">
-  <a className="f-logo" href="/"><span>CONHEÇA</span> <strong>SUMARÉ</strong></a>
+  <a className="f-logo" href="/" aria-label="Conheça Sumaré — início"><img src="/brand/conheca-sumare.png" alt="Conheça Sumaré" width="2025" height="777"/></a>
   <nav><a className="active" href="#inicio">Início</a><a href="#turismo">Turismo</a><a href="/eventos">Eventos</a><a href="#gastronomia">Gastronomia</a><a href="/guia-comercial">Negócios</a><a href="/mapa">Mapa</a></nav>
   <div className="f-actions"><a href="/explorar" className="f-search" aria-label="Buscar">⌕</a><button type="button" onClick={installApp}>Baixar App</button></div>
 </header>
@@ -46,7 +46,7 @@ export default function Home(){
   </div>
   <div className="f-phone">
     <div className="f-phone-screen">
-      <div className="f-phone-top"><small>CONHEÇA</small><strong>SUMARÉ</strong><h3>Explore<br/>Sumaré</h3><p>Turismo, cultura,<br/>eventos e experiências</p></div>
+      <div className="f-phone-top"><img className="f-phone-brand" src="/brand/conheca-sumare.png" alt="" width="2025" height="777"/><h3>Explore<br/>Sumaré</h3><p>Turismo, cultura,<br/>eventos e experiências</p></div>
       <div className="f-phone-search">⌕ &nbsp; O que você procura?</div>
       <div className="f-phone-icons">
         <span>♧<small>Atrações</small></span><span>▣<small>Eventos</small></span><span>♨<small>Gastronomia</small></span>
@@ -124,7 +124,7 @@ export default function Home(){
 </main>
 
 <footer className="f-footer">
-  <div className="f-footer-logo"><span>CONHEÇA</span> <strong>SUMARÉ</strong></div>
+  <div className="f-footer-logo"><img src="/brand/conheca-sumare.png" alt="Conheça Sumaré" width="2025" height="777" loading="lazy"/></div>
   <nav><a href="/">Conheça Sumaré</a><a href="/eventos">Eventos</a><a href="/explorar">Gastronomia</a><a href="/guia-comercial">Negócios</a><a href="/mapa">Mapa</a><a href="/privacidade">Política de Privacidade</a><a href="https://turismo.sumare.sp.gov.br/" target="_blank" rel="noopener">Portal Oficial da Cidade</a></nav>
   <div className="f-tech"><small>Tecnologia e desenvolvimento</small><img src="https://raw.githubusercontent.com/cschibelsky-star/vitrine-ai-pro/main/assets/img/logo-vitrine-ai-pro.png" alt="Vitrine IA Pro"/></div>
 </footer>
@@ -132,3 +132,4 @@ export default function Home(){
 {installHint && <p className="home-install-hint" role="status">{installHint}</p>}
  </div>;
 }
+

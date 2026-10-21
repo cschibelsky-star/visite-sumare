@@ -1,5 +1,21 @@
 # Home Conheça Sumaré — revisão isolada
 
+## Continuidade — logo aprovado em 20/10/2026
+
+Localizado o arquivo independente `Logo Conheça Sumaré isolado.png`. O histórico
+confirma aprovação do logo completo com marcador/orquídea para página/vídeo e
+do ícone para aplicativo em 20/10. O PNG original foi integrado no cabeçalho,
+rodapé e ilustração do celular da Home, sem redesenho ou alteração dos bytes.
+A base azul-marinho em CSS mantém legível a parte branca do lettering.
+`public/brand/provenance.json` registra a origem e o SHA-256, verificado pelo
+teste HTTP junto à decodificação do logo nas três larguras.
+
+Esse logo aprovado posteriormente substitui o lettering provisório; a imagem
+histórica continua referência para a composição, não para o símbolo antigo.
+Fotografias finais continuam pendentes: o inventário `image_sources.json` do
+acervo legado marca as imagens como `provisoria_referencia`, sem fonte ou
+autorização registrada. Não houve substituição por fotografias inventadas.
+
 ## Problema confirmado em 21/10/2026
 
 O PR #3 tinha somente o serviço web e respostas 503 fixas para `/api/` e

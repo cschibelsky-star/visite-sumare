@@ -1,5 +1,6 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
+import {createHash} from 'node:crypto';
 import {chromium} from 'playwright';
 const base = process.env.REVIEW_URL || 'http://127.0.0.1:18995';
 const out = 'review-evidence';
@@ -8,6 +9,9 @@ const report = {url:base, syntheticData:true, checks:[], views:[], visualApprova
 const check = (name, ok) => {report.checks.push({name,ok});assert.ok(ok,name)};
 let browser;
 try {
+  const logo=await fetch(`${base}/brand/conheca-sumare.png`);
+  const logoBytes=Buffer.from(await logo.arrayBuffer());
+  check('Approved logo served byte-for-byte from original',logo.ok && createHash('sha256').update(logoBytes).digest('hex')==='4686087ea3cbdbdd6fdd0ead431e1437d8f19d7ada6b418ea152c9a6a10a26df');
   const eventsResponse = await fetch(`${base}/api/events`);
   check('Events proxied as JSON', eventsResponse.ok && eventsResponse.headers.get('content-type').includes('application/json'));
   const events = await eventsResponse.json();
@@ -37,6 +41,7 @@ try {
     report.views.push({width,layout,errors,failures});
     check(`No JavaScript crash at ${width}`,errors.length===0);
     check(`No horizontal overflow at ${width}`,layout.scrollWidth<=width);
+    check(`Approved logo decoded at ${width}`,await page.locator('.f-logo img').evaluate(i=>i.complete && i.naturalWidth===2025 && i.naturalHeight===777));
     check(`History photo configured at ${width}`,await page.locator('.f-history-photo').evaluate(el=>getComputedStyle(el).backgroundImage!=='none'));
     if(width>760) check(`Desktop Home has no PWA navigation overlay at ${width}`,!(await page.locator('.bottomnav').isVisible()));
     await page.getByRole('button',{name:'Baixar App',exact:true}).click();

@@ -100,3 +100,10 @@
 @media(max-width:760px){.f-business-more{grid-column:1}}
 .faithful-home button:focus-visible,.faithful-home a:focus-visible{outline:3px solid #00ddea;outline-offset:3px}
 
+/* Original full logo approved on 2026-10-20; dark backing preserves white lettering. */
+.faithful-home .f-header{height:68px}
+.faithful-home .f-logo,.faithful-home .f-footer-logo{display:inline-flex;align-items:center;justify-content:center;justify-self:start;background:#062a40;border-radius:6px;padding:4px 8px}
+.faithful-home .f-logo img,.faithful-home .f-footer-logo img{display:block;width:128px;height:auto;aspect-ratio:2025/777;object-fit:contain}
+.faithful-home .f-phone-top .f-phone-brand{display:block;width:60px;height:auto;aspect-ratio:2025/777;object-fit:contain;margin-bottom:3px}
+@media(max-width:760px){.faithful-home .f-footer-logo{justify-self:center}}
+
