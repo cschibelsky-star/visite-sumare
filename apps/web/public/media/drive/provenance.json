@@ -1,0 +1,109 @@
+{
+  "authorization": {
+    "date": "2026-10-22",
+    "source": "Confirmação explícita do usuário nesta tarefa",
+    "statement": "todas as fotos que estão no meu drive podem ser usadas",
+    "scope": "Uso das fotografias disponíveis no Drive do usuário na Home Conheça Sumaré; não equivale a aceite visual ou publicação."
+  },
+  "images": [
+    {
+      "file": "FIMI0054.JPG",
+      "id": "1VM3MZc4B0Z6crH6yCIlRSoTFoq_O1y-U",
+      "content": "Vista aérea da Igreja Matriz e do centro; candidata para Cultura/História/Mapa/hero.",
+      "size": "3840 × 2160",
+      "hash": "dc2edc085283c82170e7ddae83c6f6834f1bfec7608634f78a038e6691066cfe",
+      "source": "https://drive.google.com/file/d/1VM3MZc4B0Z6crH6yCIlRSoTFoq_O1y-U/view",
+      "source_sha256": "dc2edc085283c82170e7ddae83c6f6834f1bfec7608634f78a038e6691066cfe",
+      "output": "centro-matriz-aerea.webp",
+      "authorization": "user_authorized",
+      "credit": "Acervo disponibilizado pelo usuário; fotógrafo não informado",
+      "transformation": "Redimensionamento proporcional e compressão WebP; sem geração ou reconstrução.",
+      "output_sha256": "e2918b0123e932a8af1153b6d99a042320b0c1656eb2e74014a5096b5a225cc7"
+    },
+    {
+      "file": "WhatsApp Image 2025-04-03 at 13.30.20.jpeg",
+      "id": "1n_eV1Rm7YUUoc1-KnfV1ReNxq0fZfJlZ",
+      "content": "Fachada da Igreja Matriz; candidata para Cultura/História.",
+      "size": "4096 × 3072",
+      "hash": "e47293677226c6944b2005e7b9a2ed0d40c78ae1591c7487f59a0d9035876836",
+      "source": "https://drive.google.com/file/d/1n_eV1Rm7YUUoc1-KnfV1ReNxq0fZfJlZ/view",
+      "source_sha256": "e47293677226c6944b2005e7b9a2ed0d40c78ae1591c7487f59a0d9035876836",
+      "output": "matriz-fachada.webp",
+      "authorization": "user_authorized",
+      "credit": "Acervo disponibilizado pelo usuário; fotógrafo não informado",
+      "transformation": "Redimensionamento proporcional e compressão WebP; sem geração ou reconstrução.",
+      "output_sha256": "828b5985e77bb35f2489f5405cfc34db48ccf468065c225297a1000ab7ca65ce"
+    },
+    {
+      "file": "IMG-20250519-WA0100.jpg",
+      "id": "1ML_qaqi_axlaZousLaYl8d_1OE5tCKm2",
+      "content": "Apresentação de banda/orquestra no acervo Banda Sinfônica; candidata temática para Cultura/Eventos, sem vincular a evento futuro.",
+      "size": "1280 × 960",
+      "hash": "962f4c81c9d9753564267c7b3db1e5ec5f93bb9a613b1c9b77aec56d1303204b",
+      "source": "https://drive.google.com/file/d/1ML_qaqi_axlaZousLaYl8d_1OE5tCKm2/view",
+      "source_sha256": "962f4c81c9d9753564267c7b3db1e5ec5f93bb9a613b1c9b77aec56d1303204b",
+      "output": "banda-sinfonica.webp",
+      "authorization": "user_authorized",
+      "credit": "Acervo disponibilizado pelo usuário; fotógrafo não informado",
+      "transformation": "Redimensionamento proporcional e compressão WebP; sem geração ou reconstrução.",
+      "output_sha256": "eab02d8ba4e593674443a37a13fe9c7d3728563e970bcae70538664af703d988"
+    },
+    {
+      "file": "aZBdkC8uJCTuI5THhA-Gj2pVbfQlxt9wvVAtCtg0Mr55DIGB04iZ_YEK3u46NxuXbCXnVhIMApWA0IqGaWx9Jq0OLUKdupJOt5b7vFrFzmkGvkUMoQ_8A6Yw1ltL6Nnq2JQ2nczP3zNoCGZwiTMZa6LLhBwrWWLbvRRm7M1zRm8RhBcMl0e1nhP.jpg",
+      "id": "1P2fbnsziS8oSaNUvMNTil86V77USAMUi",
+      "content": "Fachada com identificação Shopping ParkCity Sumaré visível.",
+      "output": "parkcity-fachada.webp",
+      "source_sha256": "b48280b42e6324f54d302e5373e26ed34a49c271e01f8c69a1f9b972e42e00f6",
+      "output_sha256": "ff99170914f7bd23a45c34cc17e912f14977a3de07ec08f3fc4a30c0a4e0ba38",
+      "source": "https://drive.google.com/file/d/1P2fbnsziS8oSaNUvMNTil86V77USAMUi/view",
+      "authorization": "user_authorized",
+      "credit": "Acervo disponibilizado pelo usuário; fotógrafo não informado",
+      "transformation": "Redimensionamento proporcional e compressão WebP, sem geração ou reconstrução."
+    },
+    {
+      "file": "WhatsApp-Image-2023-12-14-at-12.41.23-1068x710.jpeg.jpg",
+      "id": "1_s8aMWj_brNIRujzPqX8fXxH5OEMxlX4",
+      "content": "Entrada do Orquidário Sumaré com placa legível.",
+      "output": "orquidario.webp",
+      "source_sha256": "2c09faf1e5a11c48ad4cdd3c1eb08609f558bd68cefa448398b5c68fa1329663",
+      "output_sha256": "7588444d669a4f68200f65f0a6974fb884b8eb173e892f0bc4ff0ffdff8079e3",
+      "source": "https://drive.google.com/file/d/1_s8aMWj_brNIRujzPqX8fXxH5OEMxlX4/view",
+      "authorization": "user_authorized",
+      "credit": "Acervo disponibilizado pelo usuário; fotógrafo não informado",
+      "transformation": "Redimensionamento proporcional e compressão WebP, sem geração ou reconstrução."
+    },
+    {
+      "file": "empresa-multinacional-situada-em-sumare-esta-contratando-696a884172b1c.jpg",
+      "content": "Foto de 3M fornecida pelo usuário para substituir o card correspondente; local informado pelo usuário, sem verificação independente da unidade.",
+      "source": "Anexo fornecido pelo usuário nesta tarefa em 22/10/2026",
+      "authorization": "user_supplied_for_this_task",
+      "credit": "Imagem fornecida pelo usuário; fotógrafo não informado",
+      "source_sha256": "aa512f72e9e519cd121af3a0e35b35ba82989c50ab75e8eb03bc95e74e5e12b9",
+      "output": "3m.jpg",
+      "output_sha256": "aa512f72e9e519cd121af3a0e35b35ba82989c50ab75e8eb03bc95e74e5e12b9",
+      "transformation": "Original JPEG byte a byte; enquadramento responsivo por CSS, sem geração/reconstrução."
+    },
+    {
+      "file": "images (4).jpg",
+      "content": "Foto de FEMSA fornecida pelo usuário para substituir o card correspondente; local informado pelo usuário, sem verificação independente da unidade.",
+      "source": "Anexo fornecido pelo usuário nesta tarefa em 22/10/2026",
+      "authorization": "user_supplied_for_this_task",
+      "credit": "Imagem fornecida pelo usuário; fotógrafo não informado",
+      "source_sha256": "c1737aa09197e7cca6e0859a52a236afaa10a9d5de1a2d5e84d37f3de9e43c24",
+      "output": "femsa.jpg",
+      "output_sha256": "c1737aa09197e7cca6e0859a52a236afaa10a9d5de1a2d5e84d37f3de9e43c24",
+      "transformation": "Original JPEG byte a byte; enquadramento responsivo por CSS, sem geração/reconstrução."
+    },
+    {
+      "file": "images (2).jpg",
+      "content": "Foto de PPG fornecida pelo usuário para substituir o card correspondente; local informado pelo usuário, sem verificação independente da unidade.",
+      "source": "Anexo fornecido pelo usuário nesta tarefa em 22/10/2026",
+      "authorization": "user_supplied_for_this_task",
+      "credit": "Imagem fornecida pelo usuário; fotógrafo não informado",
+      "source_sha256": "d63f352dc07c3bfc36c10f3042d8d6afc672a9bdbcdb7bbdefa2ffd922913081",
+      "output": "ppg.jpg",
+      "output_sha256": "d63f352dc07c3bfc36c10f3042d8d6afc672a9bdbcdb7bbdefa2ffd922913081",
+      "transformation": "Original JPEG byte a byte; enquadramento responsivo por CSS, sem geração/reconstrução."
+    }
+  ]
+}

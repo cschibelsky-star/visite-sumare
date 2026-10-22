@@ -1,0 +1,36 @@
+name: Validate Home
+on: [push, pull_request]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm install --no-audit --no-fund
+      - run: npm run build
+      - run: node tests/regression-assets.mjs
+  isolated-review:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm install --no-audit --no-fund
+      - run: npm install --no-save --no-audit --no-fund playwright@1.56.1
+      - run: npx playwright install --with-deps chromium
+      - run: docker compose -f docker-compose.home-review.yml config --quiet
+      - run: docker compose -f docker-compose.home-review.yml up --build --wait
+      - run: docker compose -f docker-compose.home-review.yml exec -T web nginx -t
+      - run: node tests/home-review.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: home-review-${{ github.sha }}
+          path: review-evidence/
+      - if: always()
+        run: docker compose -f docker-compose.home-review.yml down
+
