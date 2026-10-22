@@ -26,7 +26,7 @@ try {
   for(const item of provenance.images){
     const response=await fetch(base+'/media/drive/'+item.output);
     const bytes=Buffer.from(await response.arrayBuffer());
-    check('Authorized Drive asset integrity '+item.output,response.ok && response.headers.get('content-type')?.includes('image/webp') && createHash('sha256').update(bytes).digest('hex')===item.output_sha256);
+    check('Authorized Drive asset integrity '+item.output,response.ok && response.headers.get('content-type')?.startsWith('image/') && createHash('sha256').update(bytes).digest('hex')===item.output_sha256);
   }
   const image = await fetch(`${base}/uploads/review.png`);
   const bytes = new Uint8Array(await image.arrayBuffer());
@@ -60,7 +60,7 @@ try {
       }
       return Promise.all([...urls].map(src=>new Promise(resolve=>{const img=new Image();img.onload=()=>resolve({src,ok:img.naturalWidth>0});img.onerror=()=>resolve({src,ok:false});img.src=src;})));
     });
-    check('Drive CSS photos decode at '+width,cssPhotos.length===5 && cssPhotos.every(x=>x.ok));
+    check('Drive CSS photos decode at '+width,cssPhotos.length===8 && cssPhotos.every(x=>x.ok));
     const layout = await page.evaluate(()=>({viewport:innerWidth,scrollWidth:document.documentElement.scrollWidth,brokenImages:[...document.images].filter(i=>!i.complete||i.naturalWidth===0).map(i=>i.src)}));
     await page.screenshot({path:`${out}/home-${width}.png`,fullPage:true});
     report.views.push({width,layout,errors,failures});

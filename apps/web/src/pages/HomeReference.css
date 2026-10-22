@@ -94,9 +94,9 @@
 /* Home React: links de negócio preservados sem depender de endpoints PHP de imagens */
 .f-business-more{grid-column:2;justify-self:start;margin-top:8px;color:#fff;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.55);font-size:10px;font-weight:850;padding-bottom:3px}
 .f-biz-parkcity{--biz:url('/media/drive/parkcity-fachada.webp')}
-.f-biz-ppg{--biz:linear-gradient(135deg,#256476,#102938)}
-.f-biz-3m{--biz:linear-gradient(135deg,#b5282c,#4c1820)}
-.f-biz-femsa{--biz:linear-gradient(135deg,#27777d,#12263d)}
+.f-biz-ppg{--biz:url('/media/drive/ppg.jpg')}
+.f-biz-3m{--biz:url('/media/drive/3m.jpg')}
+.f-biz-femsa{--biz:url('/media/drive/femsa.jpg')}
 @media(max-width:760px){.f-business-more{grid-column:1}}
 .faithful-home button:focus-visible,.faithful-home a:focus-visible{outline:3px solid #00ddea;outline-offset:3px}
 

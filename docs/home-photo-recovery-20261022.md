@@ -1,3 +1,13 @@
+# Atualização: fotografias das empresas recebidas em 22/10/2026
+
+O usuário forneceu quatro anexos para a tarefa: 3M, FEMSA e duas fotos PPG. Os JPEGs de 3M, FEMSA e a vista aérea PPG foram integrados sem alteração dos bytes nos respectivos cards. A alternativa PPG industrial foi inspecionada e preservada como referência, sem duplicação na Home. O identificador da marca está visível nas fotos. A atribuição da unidade local é informação fornecida pelo usuário, não comprovação independente. Fonte, autorização contextual de envio e hashes constam em `apps/web/public/media/drive/provenance.json`.
+
+Agora são **oito arquivos integrados**: cinco do Drive autorizado e três anexos fornecidos para esta tarefa. Todos os quatro cards de empresas têm fotografia (ParkCity, PPG, 3M e FEMSA). Gastronomia e Hospedagem continuam com arte provisória, pois não foi localizado substituto identificado. A composição ainda não é idêntica à referência (fotografias e enquadramentos distintos). Sem aceite visual integral; sem merge/publicação.
+
+A revisão anterior do head `5476a691` passou em build e revisão isolada, incluindo 69 checks, com contraste do hero corrigido. A nova revisão deve conferir os oito arquivos e as imagens dos cards em 390/1024/1440.
+
+---
+
 # Situação atual — autorização e integração em 22/10/2026
 
 O usuário confirmou expressamente: **“todas as fotos que estão no meu drive podem ser usadas”**. Esta confirmação resolve a pendência de autorização do acervo do Drive descrita no registro histórico abaixo. Não equivale a aceite visual nem autoriza merge/publicação.

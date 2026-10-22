@@ -71,6 +71,39 @@
       "authorization": "user_authorized",
       "credit": "Acervo disponibilizado pelo usuário; fotógrafo não informado",
       "transformation": "Redimensionamento proporcional e compressão WebP, sem geração ou reconstrução."
+    },
+    {
+      "file": "empresa-multinacional-situada-em-sumare-esta-contratando-696a884172b1c.jpg",
+      "content": "Foto de 3M fornecida pelo usuário para substituir o card correspondente; local informado pelo usuário, sem verificação independente da unidade.",
+      "source": "Anexo fornecido pelo usuário nesta tarefa em 22/10/2026",
+      "authorization": "user_supplied_for_this_task",
+      "credit": "Imagem fornecida pelo usuário; fotógrafo não informado",
+      "source_sha256": "aa512f72e9e519cd121af3a0e35b35ba82989c50ab75e8eb03bc95e74e5e12b9",
+      "output": "3m.jpg",
+      "output_sha256": "aa512f72e9e519cd121af3a0e35b35ba82989c50ab75e8eb03bc95e74e5e12b9",
+      "transformation": "Original JPEG byte a byte; enquadramento responsivo por CSS, sem geração/reconstrução."
+    },
+    {
+      "file": "images (4).jpg",
+      "content": "Foto de FEMSA fornecida pelo usuário para substituir o card correspondente; local informado pelo usuário, sem verificação independente da unidade.",
+      "source": "Anexo fornecido pelo usuário nesta tarefa em 22/10/2026",
+      "authorization": "user_supplied_for_this_task",
+      "credit": "Imagem fornecida pelo usuário; fotógrafo não informado",
+      "source_sha256": "c1737aa09197e7cca6e0859a52a236afaa10a9d5de1a2d5e84d37f3de9e43c24",
+      "output": "femsa.jpg",
+      "output_sha256": "c1737aa09197e7cca6e0859a52a236afaa10a9d5de1a2d5e84d37f3de9e43c24",
+      "transformation": "Original JPEG byte a byte; enquadramento responsivo por CSS, sem geração/reconstrução."
+    },
+    {
+      "file": "images (2).jpg",
+      "content": "Foto de PPG fornecida pelo usuário para substituir o card correspondente; local informado pelo usuário, sem verificação independente da unidade.",
+      "source": "Anexo fornecido pelo usuário nesta tarefa em 22/10/2026",
+      "authorization": "user_supplied_for_this_task",
+      "credit": "Imagem fornecida pelo usuário; fotógrafo não informado",
+      "source_sha256": "d63f352dc07c3bfc36c10f3042d8d6afc672a9bdbcdb7bbdefa2ffd922913081",
+      "output": "ppg.jpg",
+      "output_sha256": "d63f352dc07c3bfc36c10f3042d8d6afc672a9bdbcdb7bbdefa2ffd922913081",
+      "transformation": "Original JPEG byte a byte; enquadramento responsivo por CSS, sem geração/reconstrução."
     }
   ]
 }
