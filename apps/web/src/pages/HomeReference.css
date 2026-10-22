@@ -107,3 +107,6 @@
 .faithful-home .f-phone-top .f-phone-brand{display:block;width:60px;height:auto;aspect-ratio:2025/777;object-fit:contain;margin-bottom:3px}
 @media(max-width:760px){.faithful-home .f-footer-logo{justify-self:center}}
 
+
+/* Readable lettering over the recovered photographs in all responsive views. */
+.faithful-home .f-script{background:rgba(235,255,250,.94);padding:8px 12px;border-radius:9px;color:#0e3639;text-shadow:none}
