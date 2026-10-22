@@ -10,9 +10,7 @@ services:
     tmpfs:
       - /app/review-data
       - /app/review-uploads
-    networks:
-      review:
-        aliases: [conheca-review-api]
+    networks: [review]
     healthcheck:
       test: ["CMD", "node", "-e", "fetch('http://127.0.0.1:8787/api/health').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"]
       interval: 5s
@@ -35,7 +33,5 @@ services:
       timeout: 5s
       retries: 3
 networks:
-  review:
-    external: true
-    name: n8n-traefik_app_network
+  review: {}
 
