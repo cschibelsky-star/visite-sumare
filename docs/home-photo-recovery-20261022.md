@@ -1,3 +1,21 @@
+# Situação atual — autorização e integração em 22/10/2026
+
+O usuário confirmou expressamente: **“todas as fotos que estão no meu drive podem ser usadas”**. Esta confirmação resolve a pendência de autorização do acervo do Drive descrita no registro histórico abaixo. Não equivale a aceite visual nem autoriza merge/publicação.
+
+Cinco fotografias identificadas foram integradas como WebP locais: vista aérea do centro/Matriz, fachada da Matriz, Banda Sinfônica (imagem temática), fachada do ParkCity Sumaré e Orquidário Municipal. Originais, fontes e hashes registrados em `apps/web/public/media/drive/provenance.json`. Não se afirma que o autor das fotos seja o usuário; o crédito individual não foi informado. Nenhuma imagem foi gerada/reconstruída.
+
+Aplicações: Cultura/Mapa/hero/História usam imagens identificadas; card ParkCity passa a usar sua fachada; mockup do telefone usa o Orquidário e legenda correspondente. Foto da banda é temática, não documental do próximo evento. O React, os serviços, a API e o seed não foram substituídos.
+
+Permanecem pendentes fotografias correspondentes para Gastronomia, Hospedagem e os cards PPG/3M/FEMSA. A foto do lago FIMI0004 foi recuperada, mas o local ainda não foi confirmado. A existência de autorização não resolve identificação geográfica nem correspondência visual. A composição preserva as seções da referência, mas não corresponde integralmente às fotografias da referência (Pró-Memória/feira etc.). Sem aceite visual integral.
+
+A busca por nome via filtro de metadados encontrou o ParkCity na pasta de materiais `1no4kozS72ctQ3R9bIIovK5H6XigDvv7C`, fora de Conheca Sumare/Passaporte; houve recuperação da foto de fachada e interior e do Orquidário. Fotos duplicadas não foram integradas. O interior foi validado e reservado, sem uso neste commit.
+
+Testes adicionam integridade SHA-256 das cinco derivações e decodificação das fotos em backgrounds CSS em 390/1024/1440. O teste legado foi renomeado de “Official photo” para “Legacy JPEG delivery”: entrega JPEG não comprova autorização. O resultado final do CI e a inspeção das novas capturas devem ser registrados após a execução. Produção preservada; PR draft.
+
+---
+
+## Registro histórico da descoberta, anterior à autorização
+
 # Recuperação do acervo da Home — 22/10/2026
 
 Base examinada: `91ae7985f67960d72243c7aa8b5c36b90011fbae`, PR #3, branch `fix/conheca-home-approved-visual-20261020`.

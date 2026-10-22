@@ -16,11 +16,17 @@ try {
   check('Events proxied as JSON', eventsResponse.ok && eventsResponse.headers.get('content-type').includes('application/json'));
   const events = await eventsResponse.json();
   check('Disposable review events, including negative cases', events.length===4 && events.some(e=>e.id==='review-pending'));
-  const approvedMedia=["images/atrativos/praca-das-bandeiras/capa-real.jpg","images/atrativos/igreja-matriz-santana/capa.jpg","images/eventos/feira-artesanato/capa-real.jpg","images/atrativos/bosque-dallorto/capa-real.jpg","images/atrativos/pro-memoria/capa-real.jpg","images/atrativos/represa-marcelo-pedroni/capa-real.jpg","images/atrativos/horto-florestal/capa.jpg","images/atrativos/casarao-sertaozinho/capa.jpg","images/atrativos/shopping-parkcity/capa.jpg","images/atrativos/nova-veneza/capa.jpg","images/atrativos/ceav/capa.jpg","images/atrativos/orquidario-municipal/capa.jpg","images/atrativos/recanto-dos-animais/capa.jpg","images/atrativos/estancia-arvore-da-vida/capa.jpg","images/atrativos/capela-bom-jesus/capa.jpg","assets/img/real/comercio.jpg","assets/img/real/gastronomia.jpg","assets/img/real/hospedagem.jpg","assets/img/hero-real.jpg"];
-  for(const item of approvedMedia){
+  const legacyMedia=["images/atrativos/praca-das-bandeiras/capa-real.jpg","images/atrativos/igreja-matriz-santana/capa.jpg","images/eventos/feira-artesanato/capa-real.jpg","images/atrativos/bosque-dallorto/capa-real.jpg","images/atrativos/pro-memoria/capa-real.jpg","images/atrativos/represa-marcelo-pedroni/capa-real.jpg","images/atrativos/horto-florestal/capa.jpg","images/atrativos/casarao-sertaozinho/capa.jpg","images/atrativos/shopping-parkcity/capa.jpg","images/atrativos/nova-veneza/capa.jpg","images/atrativos/ceav/capa.jpg","images/atrativos/orquidario-municipal/capa.jpg","images/atrativos/recanto-dos-animais/capa.jpg","images/atrativos/estancia-arvore-da-vida/capa.jpg","images/atrativos/capela-bom-jesus/capa.jpg","assets/img/real/comercio.jpg","assets/img/real/gastronomia.jpg","assets/img/real/hospedagem.jpg","assets/img/hero-real.jpg"];
+  for(const item of legacyMedia){
     const response=await fetch(`${base}/media/${item}`);
     const bytes=new Uint8Array(await response.arrayBuffer());
-    check(`Official photo ${item}`,response.ok && response.headers.get('content-type')?.includes('image/') && bytes[0]===255 && bytes[1]===216 && bytes.length>1000);
+    check(`Legacy JPEG delivery ${item}`,response.ok && response.headers.get('content-type')?.includes('image/') && bytes[0]===255 && bytes[1]===216 && bytes.length>1000);
+  }
+  const provenance=await (await fetch(base+'/media/drive/provenance.json')).json();
+  for(const item of provenance.images){
+    const response=await fetch(base+'/media/drive/'+item.output);
+    const bytes=Buffer.from(await response.arrayBuffer());
+    check('Authorized Drive asset integrity '+item.output,response.ok && response.headers.get('content-type')?.includes('image/webp') && createHash('sha256').update(bytes).digest('hex')===item.output_sha256);
   }
   const image = await fetch(`${base}/uploads/review.png`);
   const bytes = new Uint8Array(await image.arrayBuffer());
@@ -42,6 +48,19 @@ try {
     await page.locator('.f-feature').filter({hasText:'Evento de homologação — confirmado'}).waitFor();
     check(`Home selects confirmed upcoming event at ${width}`,await page.locator('.f-feature').filter({hasText:'Evento de homologação — confirmado'}).count()===1);
     check(`Home excludes pending/expired event at ${width}`,!(await page.locator('.faithful-home').innerText()).includes('Evento de homologação — pendente') && !(await page.locator('.faithful-home').innerText()).includes('Evento de homologação — encerrado'));
+    const cssPhotos=await page.evaluate(async()=>{
+      const urls=new Set();
+      for(const selector of ['.f-hero-bg','.f-phone-top','.f-history-photo','.f-categories a','.f-feature','.f-mini-grid a','.f-business-card','.f-phone-card']){
+        for(const el of document.querySelectorAll(selector)){
+          for(const pseudo of [null,'::before','::after']){
+            const bg=getComputedStyle(el,pseudo).backgroundImage;
+            for(const match of bg.matchAll(/url\(["']?([^"')]+)["']?\)/g)) if(match[1].includes('/media/drive/'))urls.add(match[1]);
+          }
+        }
+      }
+      return Promise.all([...urls].map(src=>new Promise(resolve=>{const img=new Image();img.onload=()=>resolve({src,ok:img.naturalWidth>0});img.onerror=()=>resolve({src,ok:false});img.src=src;})));
+    });
+    check('Drive CSS photos decode at '+width,cssPhotos.length===5 && cssPhotos.every(x=>x.ok));
     const layout = await page.evaluate(()=>({viewport:innerWidth,scrollWidth:document.documentElement.scrollWidth,brokenImages:[...document.images].filter(i=>!i.complete||i.naturalWidth===0).map(i=>i.src)}));
     await page.screenshot({path:`${out}/home-${width}.png`,fullPage:true});
     report.views.push({width,layout,errors,failures});

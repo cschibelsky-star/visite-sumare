@@ -1,4 +1,4 @@
-const CACHE_NAME = 'conheca-sumare-restore-20261021';
+const CACHE_NAME = 'conheca-sumare-drive-20261022';
 const APP_SHELL = ['/', '/manifest.webmanifest', '/icons/icon.svg'];
 
 self.addEventListener('install', (event) => {
